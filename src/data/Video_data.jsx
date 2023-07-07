@@ -48,6 +48,13 @@ const videos = [
     time: "1 month ago",
     verified: true,
   },
+  {
+    title: "Python tutorial",
+    channel: "Coder Dost",
+    views: "100M",
+    time: "10 month ago",
+    verified: true,
+  },
 ];
 
 export default videos;
