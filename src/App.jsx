@@ -1,6 +1,7 @@
 import "./App.css";
 import Video from "./components/Video";
 import videos from "./data/Video_data";
+import Play_Button from "./components/PlayButton";
 
 function App() {
   return (
@@ -15,7 +16,14 @@ function App() {
             views={video_data.views}
             time={video_data.time}
             verified={video_data.verified}
-          ></Video>
+          >
+            <Play_Button
+              onPlay={() => console.log("play")}
+              onPause={() => console.log("pause")}
+            >
+              Play
+            </Play_Button>
+          </Video>
         ))}
       </div>
     </>

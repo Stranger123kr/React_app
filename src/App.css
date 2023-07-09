@@ -32,6 +32,12 @@
   padding: 2rem 3rem;
 }
 
+img,
+a,
+button {
+  cursor: pointer;
+}
+
 /*------------------------ media query-----------------*/
 
 @media (max-width: 576px) {
