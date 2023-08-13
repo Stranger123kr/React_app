@@ -45,4 +45,8 @@ button {
     padding: 2rem 1rem;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
+  button:hover {
+    background: #fff;
+    color: #000;
+  }
 }
