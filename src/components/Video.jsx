@@ -1,6 +1,18 @@
 import "./Video.css";
+import { AiOutlineDelete } from "react-icons/ai";
+import { BiEdit } from "react-icons/bi";
 
-function Video({ title, id, channel, views, time, verified, children }) {
+function Video({
+  title,
+  id,
+  channel,
+  views,
+  time,
+  verified,
+  children,
+  DeleteVideo,
+  EditedVideo,
+}) {
   return (
     <>
       <div className="container">
@@ -18,6 +30,10 @@ function Video({ title, id, channel, views, time, verified, children }) {
             <span className="time">{time}</span>
           </div>
           <div className="btn">{children}</div>
+          <div className="delete">
+            <AiOutlineDelete className="" onClick={() => DeleteVideo(id)} />
+            <BiEdit className="Edited" onClick={() => EditedVideo(id)} />
+          </div>
         </div>
       </div>
     </>
