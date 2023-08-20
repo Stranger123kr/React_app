@@ -12,22 +12,22 @@ const InitialValue = {
 };
 
 function AddVideo({
-  addVideos,
-  updateVideo,
+  dispatch,
   editableVideos,
   setEditableVideos,
+  setTheme,
+  theme,
 }) {
   const [video, setVideo] = useState(InitialValue);
 
   function handleSubmit(element) {
     element.preventDefault();
-    console.log(editableVideos);
 
     if (editableVideos) {
-      updateVideo(video);
+      dispatch({ type: "Update", payload: video });
       setEditableVideos(null);
     } else {
-      addVideos(video);
+      dispatch({ type: "Add", payload: video });
     }
     setVideo(InitialValue);
   }
@@ -35,6 +35,13 @@ function AddVideo({
   function handleChange(e) {
     setVideo({ ...video, [e.target.name]: e.target.value });
   }
+
+  const handleTheme = (e) => {
+    e.preventDefault();
+    theme !== "DarkMode"
+      ? (setTheme("DarkMode"), localStorage.setItem("themeMode", "DarkMode"))
+      : (setTheme("LightMode"), localStorage.setItem("themeMode", "LightMode"));
+  };
 
   useEffect(() => {
     if (editableVideos) {
@@ -44,7 +51,7 @@ function AddVideo({
 
   return (
     <>
-      <div className="form_container">
+      <div className={`form_container ${theme}`}>
         <form>
           <input
             type="text"
@@ -65,6 +72,12 @@ function AddVideo({
 
           <button onClick={handleSubmit}>
             {editableVideos ? "Edit" : "Add"}
+          </button>
+          <button
+            style={{ marginLeft: "0.8rem", width: "50%" }}
+            onClick={handleTheme}
+          >
+            {theme === "DarkMode" ? "Light Mode" : "Dark Mode"}
           </button>
         </form>
       </div>

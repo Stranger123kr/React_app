@@ -1,6 +1,8 @@
+import { useContext } from "react";
 import "./Video.css";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
+import ThemeContext from "../Context/ThemeContext";
 
 function Video({
   title,
@@ -10,17 +12,19 @@ function Video({
   time,
   verified,
   children,
-  DeleteVideo,
+  dispatch,
   EditedVideo,
 }) {
+  const themeContext = useContext(ThemeContext);
+
   return (
     <>
-      <div className="container">
-        <div className="card">
+      <div className={`container ${themeContext}`}>
+        <div className={`card ${themeContext}`}>
           <div className="pic">
             <img src={`https://picsum.photos/id/${id}/0/0`} alt="random_img" />
           </div>
-          <h1 className="title">{title}</h1>
+          <h1 className={`title`}>{title}</h1>
           <div className="channel">
             {channel}
             {verified && <span>✅</span>}
@@ -30,8 +34,11 @@ function Video({
             <span className="time">{time}</span>
           </div>
           <div className="btn">{children}</div>
-          <div className="delete">
-            <AiOutlineDelete className="" onClick={() => DeleteVideo(id)} />
+          <div className={`delete ${themeContext}`}>
+            <AiOutlineDelete
+              className=""
+              onClick={() => dispatch({ type: "Delete", payload: id })}
+            />
             <BiEdit className="Edited" onClick={() => EditedVideo(id)} />
           </div>
         </div>

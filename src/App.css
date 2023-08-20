@@ -5,6 +5,13 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+}
+
+.LightMode {
+  background: #ccc;
+}
+
+.DarkMode {
   background: #333;
 }
 
