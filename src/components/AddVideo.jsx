@@ -1,5 +1,6 @@
 import "./AddVideo.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import useVideoDispatch from "../Hooks/VideosDispatch";
 
 // ----------------------------------------------------------------
 
@@ -11,14 +12,10 @@ const InitialValue = {
   views: "",
 };
 
-function AddVideo({
-  dispatch,
-  editableVideos,
-  setEditableVideos,
-  setTheme,
-  theme,
-}) {
+function AddVideo({ editableVideos, setEditableVideos, setTheme, theme }) {
   const [video, setVideo] = useState(InitialValue);
+  const dispatch = useVideoDispatch();
+  const Input = useRef(null);
 
   function handleSubmit(element) {
     element.preventDefault();
@@ -47,6 +44,8 @@ function AddVideo({
     if (editableVideos) {
       setVideo(editableVideos);
     }
+
+    Input.current.focus();
   }, [editableVideos]);
 
   return (
@@ -60,6 +59,7 @@ function AddVideo({
             autoComplete="off"
             placeholder="Title"
             value={video.title}
+            ref={Input}
           />
           <input
             type="text"

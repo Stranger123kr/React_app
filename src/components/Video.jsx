@@ -3,6 +3,9 @@ import "./Video.css";
 import { AiOutlineDelete } from "react-icons/ai";
 import { BiEdit } from "react-icons/bi";
 import ThemeContext from "../Context/ThemeContext";
+import useVideoDispatch from "../Hooks/VideosDispatch";
+
+// -----------------------------------------------------------------------------------
 
 function Video({
   title,
@@ -12,10 +15,10 @@ function Video({
   time,
   verified,
   children,
-  dispatch,
   EditedVideo,
 }) {
   const themeContext = useContext(ThemeContext);
+  const dispatch = useVideoDispatch(); // this is context for dispatch
 
   return (
     <>
