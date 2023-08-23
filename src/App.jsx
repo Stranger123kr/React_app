@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState, useReducer, useEffect } from "react";
+import { useState, useReducer } from "react";
 import VideoDB from "./data/Video_data";
 import AddVideo from "./components/AddVideo";
 import VideoList from "./components/VideoList";
